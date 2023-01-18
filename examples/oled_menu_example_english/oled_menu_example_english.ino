@@ -1,6 +1,7 @@
 #include <SSD1306Wire.h>
 #include "OLEDMenuFonts.h"
 #include "OLEDMenuManager.h"
+#undef OLED_MENU_TRANSLATIONS_H_
 #include "OLEDMenuTranslationsEnglish.h"
 #define digitalRead(x) ((GPIO_REG_READ(GPIO_IN_ADDRESS) >> x) & 1)
 

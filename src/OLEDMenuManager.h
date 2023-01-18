@@ -13,7 +13,6 @@ enum class OLEDMenuState
     ITEM_HANDLING,
     FREEZING,
     GOING_BACK,
-    SCREEN_SAVER
 };
 enum class OLEDMenuNav
 {
@@ -39,6 +38,8 @@ private:
     int8_t scrollDir;
     uint16_t numRegisteredItem;
     unsigned long lastUpdateTime;
+    unsigned long lastKeyPressedTime;
+    unsigned long screenSaverLastUpdateTime;
     int8_t leadInFramesLeft = OLED_MENU_SCROLL_LEAD_IN_FRAMES;
     const uint8_t *font;
     char statusBarBuffer[16];
@@ -83,6 +84,16 @@ private:
         this->display->drawString(0, 0, msg);
         this->display->display();
         this->disabled = true;
+    }
+
+    void drawScreenSaver()
+    {
+        display->clear();
+        display->setColor(OLEDDISPLAY_COLOR::WHITE);
+        constexpr int16_t max_x = OLED_MENU_WIDTH - OM_SCREEN_SAVER_WIDTH;
+        constexpr int16_t max_y = OLED_MENU_HEIGHT - OM_SCREEN_SAVER_HEIGHT;
+        display->drawXbm(rand() % max_x, rand() % max_y, IMAGE_ITEM(OM_SCREEN_SAVER));
+        display->display();
     }
 
 public:

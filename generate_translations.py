@@ -31,6 +31,11 @@ menu_items = [
         # should not be larger than 12 (or adjust according to MENU_STATUS_BAR_HEIGHT)
         "size": 12
     },
+     {
+        "tag": "OM_SCREEN_SAVER",
+        "text": "Press Any Key",
+        "zh_cn": "按任意键恢复",
+    },
     {
         "tag": "DEMO_SHORT",
         "text": "Short text",
